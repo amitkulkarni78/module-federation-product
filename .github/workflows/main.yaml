@@ -20,16 +20,10 @@ jobs:
         
     - name: Install dependencies
       run: |
-        cd host
-        npm install
-        cd ../products
         npm install
         
     - name: Build
       run: |
-        cd host
-        npm run build
-        cd ../products
         npm run build
         
     - name: Configure AWS credentials
@@ -41,8 +35,7 @@ jobs:
         
     - name: Deploy to S3
       run: |
-        aws s3 sync host/build s3://${{ secrets.S3_BUCKET_NAME }}/host --delete
-        aws s3 sync products/build s3://${{ secrets.S3_BUCKET_NAME }}/products --delete
+        aws s3 sync /dist s3://${{ secrets.S3_BUCKET_NAME }}/products --delete
         
     - name: Invalidate CloudFront cache
       run: |
