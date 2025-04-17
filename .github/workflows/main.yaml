@@ -37,6 +37,7 @@ jobs:
         role-to-assume: arn:aws:iam::730335601824:user/S3bucketuser
         role-session-name: GithubActionsSession
         aws-region: us-east-1
+        
     - name: Verify AWS credentials
       run: |
         aws sts get-caller-identity
