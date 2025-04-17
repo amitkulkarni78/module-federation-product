@@ -53,5 +53,5 @@ function Products() {
         </div>
     );
 }
-
+// console.log(products)
 export default Products;
