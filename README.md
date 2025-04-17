@@ -44,3 +44,74 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# Micro-Frontend Module Federation Example
+
+This is a micro-frontend application built using Module Federation and React.
+
+## Project Structure
+
+- `host/` - Main application container
+- `products/` - Products micro-frontend
+
+## Setup Instructions
+
+1. Clone the repository
+```bash
+git clone <your-repo-url>
+cd module-federation-example
+```
+
+2. Install dependencies
+```bash
+# Install host dependencies
+cd host
+npm install
+
+# Install products dependencies
+cd ../products
+npm install
+```
+
+3. Start development servers
+```bash
+# Start host
+cd host
+npm start
+
+# Start products (in a new terminal)
+cd products
+npm start
+```
+
+## AWS Deployment Setup
+
+1. Create an S3 bucket for static hosting
+2. Create a CloudFront distribution
+3. Set up GitHub Secrets:
+   - AWS_ACCESS_KEY_ID
+   - AWS_SECRET_ACCESS_KEY
+   - S3_BUCKET_NAME
+   - CLOUDFRONT_DISTRIBUTION_ID
+
+## CI/CD Pipeline
+
+The project uses GitHub Actions for CI/CD. The pipeline:
+1. Builds both host and products applications
+2. Deploys to S3
+3. Invalidates CloudFront cache
+
+## Environment Variables
+
+Create `.env` files in both host and products directories:
+
+```env
+REACT_APP_API_URL=https://your-api-url
+```
+
+## Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Submit a pull request 
