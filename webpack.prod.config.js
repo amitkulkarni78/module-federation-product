@@ -5,13 +5,13 @@ const path = require("path");
 
 module.exports = {
     entry: './src/index.tsx',
-    mode: 'development',
+    mode: 'production',
     devServer: {
         port: 3002,
         historyApiFallback: true
     },
     output: {
-        publicPath: "http://localhost:3002/",
+        publicPath: "https://d2rlgquuf6ymrx.cloudfront.net/products/",
     },
     module: {
         rules: [{
@@ -62,7 +62,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
             templateParameters: {
-                PUBLIC_URL: 'http://localhost:3002'
+                PUBLIC_URL: 'https://d2rlgquuf6ymrx.cloudfront.net/products'
             }
         })
     ]
